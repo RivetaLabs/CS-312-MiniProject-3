@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 24px auto;
+    padding: 0 16px;
+    background: #f4f4f4;
+    color: #222;
+    overflow-wrap: anywhere;
+}
+
+form, article {
+    margin-bottom: 24px;
+}
+
+article {
+    padding: 16px;
+    background: white;
+    border: 1px solid #ccc;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0;
+    font: inherit;
+}
+
+button {
+    margin-top: 12px;
+    padding: 10px 16px;
+    background: #174ea6;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+a {
+    color: #174ea6;
+}

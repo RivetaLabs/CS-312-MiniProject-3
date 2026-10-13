@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cool SEO optimized blog! Should've let me use Astro</title>
+</head>
+
+<body>
+    <h1>Jacob's Jubilous Journal</h1>
+    <p>My name is Jacob! Here's my Jubilous journal with all my journeys.</p>
+
+    <p><a href="/signup">Sign up</a> | <a href="/signin">Sign in</a></p>
+
+    <% if (user) { %>
+    <form action="/posts" method="POST">
+        <label for="author">Your name please</label>
+        <input type="text" id="author" name="author" value="<%= user.name %>" readonly>
+        <label for="title">Post Title</label>
+        <input type="text" id="title" name="title" maxlength="255" required>
+        <label for="body"> Your post</label>
+        <textarea id="body" name="body" rows="7" required></textarea>
+        <label for="category">Category</label>
+        <select id="category" name="category">
+            <option value="tech">Tech</option>
+            <option value="sports">Sports</option>
+            <option value="money-moves">Money Moves</option>
+        </select>
+        <button type="submit">Make an SEO OPTIMIZED post</Button>
+    </form>
+    <% } else { %>
+        <p>Sign in to create a post.</p>
+    <% } %>
+    <p> Total posts: <%= posts.length %>
+    </p>
+    <% posts.forEach((post)=> { %>
+        <article>
+            <h2>
+                <%= post.title %>
+            </h2>
+            <p>
+                <%= post.body %>
+            </p>
+            <p>By: <%= post.creator_name %>
+            </p>
+            <p>
+                Category: <%= post.category %>
+            </p>
+            <p>Created: <%= post.date_created.toLocaleString() %>
+            </p>
+            <% if (user && user.user_id === post.creator_user_id) { %>
+            <a href="/posts/<%= post.blog_id %>/edit">Edit</a>
+            <form action="/posts/<%= post.blog_id %>/delete" method="POST">
+                <button type="submit">Delete</button>
+            </form>
+            <% } %>
+        </article>
+        <% }); %>
+</body>
+
+</html>
